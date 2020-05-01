@@ -11,4 +11,5 @@ private:
   struct sockaddr_in direccionLocal;
   struct sockaddr_in direccionForanea;
   int s; //ID socket
+
 };

@@ -18,6 +18,7 @@
 using namespace std;
 char* loadData(string fileName, int& longitud)
 {
+  
     char* arrayTemp = NULL;
     ifstream file;
     file.open(fileName);

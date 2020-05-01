@@ -16,6 +16,7 @@ public:
 private:
   char *datos;
   char ip[16];
+  
   unsigned int longitud;
   int puerto;
   };
