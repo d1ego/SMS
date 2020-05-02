@@ -50,7 +50,6 @@ char* loadData(string fileName, int& longitud)
 int main(int argc, char* argv[]) {
     int longitud = 1000;
      char* arrayTemp = loadData("bd.txt", longitud);
-
 		SocketDatagrama cliente = SocketDatagrama(6666);
 		PaqueteDatagrama paquete = PaqueteDatagrama(arrayTemp, 6000, argv[1], 6000);
     cliente.envia(paquete);
