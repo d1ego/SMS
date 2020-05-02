@@ -1,7 +1,8 @@
 #include "PaqueteDatagrama.h"
 #include "SocketDatagrama.h"
-#include <iostream>     // std::cout
-#include <fstream>      // std::ifstream
+#include <iostream>
+#include <fstream>
+#include <string>
 #include<sys/types.h>
 #include<sys/socket.h>
 #include<stdio.h>
@@ -9,16 +10,15 @@
 #include<netdb.h>
 #include<string.h>
 #include <stdlib.h>
-
 #include <cstdlib>
 #include <string>
-
-#include <stdio.h>
+#include <string.h>
 
 using namespace std;
 char* loadData(string fileName, int& longitud)
 {
-  
+//strcat(newstr, "\n");
+
     char* arrayTemp = NULL;
     ifstream file;
     file.open(fileName);
@@ -34,7 +34,9 @@ char* loadData(string fileName, int& longitud)
     while(getline(file, line))
     {
         line2 += line;
+        line2 = line2+ "\n";
     }
+
     longitud = line2.size() + 1;
     arrayTemp = new char[longitud];
     for(int i = 0; i <longitud; i++)
@@ -46,16 +48,16 @@ char* loadData(string fileName, int& longitud)
     return arrayTemp;
 }
 int main(int argc, char* argv[]) {
-  long length;
-
-  int longitud = 0;
-    char* arrayTemp = loadData("bd.txt", longitud);
+    int longitud = 1000;
+     char* arrayTemp = loadData("bd.txt", longitud);
 
 		SocketDatagrama cliente = SocketDatagrama(6666);
-		PaqueteDatagrama paquete = PaqueteDatagrama(arrayTemp, sizeof(arrayTemp), argv[1], 6000);
+		PaqueteDatagrama paquete = PaqueteDatagrama(arrayTemp, 6000, argv[1], 6000);
     cliente.envia(paquete);
 		cliente.recibe(paquete);
-		cout << "\nSe envio el registro:"<<endl;
+		cout << " Se ha enviado el voto"<<endl;
     cout<<arrayTemp<<endl;
+		cout << paquete.obtieneDireccion()<<endl;
+		cout << paquete.obtienePuerto()<<endl;
     return 0;
 }

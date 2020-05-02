@@ -91,8 +91,8 @@ int main(int argc, char *argv[]){
         //archivo << write(fd_archivo, &reg1, sizeof(reg1))<<endl;
        // archivo<< write(destino, &reg1, sizeof(reg1));
         write(destino, &reg1, sizeof(reg1));
-        write(1, &reg1, sizeof(reg1));
-		printf("\n");
+        //write(1, &reg1, sizeof(reg1));
+		//printf("\n");
 	}
 
     close(destino);

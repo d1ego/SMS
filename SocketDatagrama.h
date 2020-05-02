@@ -10,7 +10,6 @@
 #include <strings.h>
 class SocketDatagrama
 {
-  
 public:
   SocketDatagrama(int);
   ~SocketDatagrama();
