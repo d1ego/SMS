@@ -12,11 +12,11 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char* argv[]) {
     SocketDatagrama  servidor = SocketDatagrama(6000);
     PaqueteDatagrama paqueteRecibido = PaqueteDatagrama(6000);
     cout << "Esperando Respuesta:\n";
-           ofstream fs("salidaServidor.txt");
+           ofstream fs(argv[2]);
     while (1) {
         servidor.recibe(paqueteRecibido);
         cout << "Se recibio el voto: " <<paqueteRecibido.obtieneDatos()<<endl;
